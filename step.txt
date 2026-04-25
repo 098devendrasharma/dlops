@@ -1,12 +1,59 @@
-Phase 1 : Create Directory and Logger
-    Step 1 : Create virtual environment using uv
-    Step 2 : Create Template.py ==> it is help to create Directory 
-    Step 3 : src --> cnnClasifier --> constant -->  __init__.py 
-                we mention here : 
-                    1. all config comes from config --> config.yaml file and 
-                    2. all parameter comes from params.yaml file 
-    Step 4 : src --> cnnClasifier --> __init__.py 
-                we mention here : how to create logger 
-    Step 5 : main.py ==> Here we test our logger is perfectly work or not 
+Project Road map
+
+Phase 1 : Create Project Structure and Logger
+    Step 1 : Create Virtual Environment using UV
+            Use uv to create a virtual environment.
+            It creates an isolated Python environment for your project.
+            This avoids package conflicts with other projects.
+    Step 2 : Create Template.py 
+            Create a file named template.py.
+            This file automatically creates required folders and files for the project.
+    Step 3 : Create src/cnnClassifier/constants/__init__.py
+            This file stores constant paths used in the project.
+            We define:
+                1. Configuration File Path (config.yaml)
+                    Configuration means project settings such as folders, file paths, URLs, and pipeline structure.
+                Example: config.yaml
+                            artifacts_root: artifacts
+
+                            data_ingestion:
+                            root_dir: artifacts/data_ingestion
+                            source_URL: https://example.com/data.zip
+                            local_data_file: artifacts/data_ingestion/data.zip
+                            unzip_dir: artifacts/data_ingestion/
+                
+                2. Parameter File Path (params.yaml)
+                    Parameters mean model values/settings used during training.
+                Example: params.yaml
+                            IMAGE_SIZE: [224, 224, 3]
+                            BATCH_SIZE: 32
+                            EPOCHS: 10
+                            LEARNING_RATE: 0.001
+                            CLASSES: 2
+
+            Easy Difference Between Configuration and Parameters
+                | Type          | Meaning                 | Example                           |
+                | ------------- | ----------------------- | --------------------------------- |
+                | Configuration | Project setup settings  | folder path, URL, save location   |
+                | Parameters    | Model training settings | batch size, epochs, learning rate |
+
+    Step 4 : Create src/cnnClassifier/__init__.py
+                Inside this file, create the logger.
+                    Logger helps to:
+                                    Save execution messages
+                                    Track progress
+                                    Find errors easily 
+                                    we mention here : how to create logger 
+            Example : logs/running_logs.log
+                [2026-04-25 10:00:00] INFO - Data ingestion started
+                [2026-04-25 10:01:10] INFO - Data downloaded successfully
+    Step 5 : main.py 
+                Use main.py to test whether the logger works properly.
+            Example: 
+                from src.cnnClassifier import logger
+                logger.info("Welcome to our custom logger")
 
 Phase 2 : Data Injection 
+    What is Data Ingestion?
+        Data ingestion means collecting data from source and storing it in your project.
+    
