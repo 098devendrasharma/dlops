@@ -56,4 +56,28 @@ Phase 1 : Create Project Structure and Logger
 Phase 2 : Data Injection 
     What is Data Ingestion?
         Data ingestion means collecting data from source and storing it in your project.
+    Step 1 : Create a file in utills that name is common.py 
+        in this file we have do some task like create direcory , read , load director
+    Step 2 : update cofig --> config.yaml
+        # all the folder made in artifacts folder 
+        artifacts_root: artifacts
+        
+        data_ingestion:
+            root_dir: artifacts/data_ingestion
+            source_URL: https://raw.githubusercontent.com/1602saurab/data_im/main/Chicken-fecal-images%20(2).zip
+            local_data_file: artifacts/data_ingestion/data.zip
+            unzip_dir: artifacts/data_ingestion
+        
+        # also update in config --> config.yaml
+
+    Step 3 : update parameter yaml
+            AUGMENTATION: True
+            IMAGE_SIZE: [224, 224, 3] # as per VGG 16 model
+            BATCH_SIZE: 16
+            INCLUDE_TOP: False
+            EPOCHS: 1
+            CLASSES: 2
+            WEIGHTS: imagenet
+            LEARNING_RATE: 0.01
+ 
     

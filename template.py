@@ -10,11 +10,11 @@ project_name = "cnnClassifier"
 list_of_files = [
     ".github/workflows/.gitkeep",                   # .gitkeep : when make  CI/CD ==> we make automation workflow ==> this script write on this file 
     f"src/{project_name}/__init__.py",              # __init__.py : make package 
-    f"src/{project_name}/component/__init__.py",    # component : there have data Injection 
+    f"src/{project_name}/components/__init__.py",   # component : there have data Injection 
     f"src/{project_name}/utils/__init__.py",        # utils : in folder we have our parameter like : learning rate 
     f"src/{project_name}/config/__init__.py",       # config : in folder we have our confugration which file import 
-    f"src/{project_name}/config/configration.py",   # configration.py : this monitor all the parameter
-    f"src/{project_name}/pipeline/configration.py", # 
+    f"src/{project_name}/config/configuration.py",   # configration.py : this monitor all the parameter
+    f"src/{project_name}/pipeline/configuration.py", # 
     f"src/{project_name}/entity/__init__.py",       # entity folder
     f"src/{project_name}/constants/__init__.py",    # constance folder 
     "config/config.yaml",                           # config.yaml ==> wrtite script

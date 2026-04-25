@@ -10,7 +10,8 @@ from pathlib import Path
 from typing import Any
 import base64
 
-
+# this function is work to read yaml file  :
+    # if it readable then give it is readable else give error
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     try:
         with open(path_to_yaml, "r", encoding="utf-8") as yaml_file:
@@ -59,6 +60,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
 
 
 # @ensure_annotations
+# if yaml file read then read then create the data 
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
 
@@ -73,6 +75,7 @@ def create_directories(path_to_directories: list, verbose=True):
 
 
 # @ensure_annotations
+# if create the data then save data
 def save_json(path: Path, data: dict):
     """save json data
 
@@ -89,6 +92,7 @@ def save_json(path: Path, data: dict):
 
 
 # @ensure_annotations
+# if save data then load the data
 def load_json(path: Path) -> ConfigBox:
     """load json files data
 
