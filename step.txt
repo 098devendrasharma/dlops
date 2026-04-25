@@ -1,0 +1,12 @@
+Phase 1 : Create Directory and Logger
+    Step 1 : Create virtual environment using uv
+    Step 2 : Create Template.py ==> it is help to create Directory 
+    Step 3 : src --> cnnClasifier --> constant -->  __init__.py 
+                we mention here : 
+                    1. all config comes from config --> config.yaml file and 
+                    2. all parameter comes from params.yaml file 
+    Step 4 : src --> cnnClasifier --> __init__.py 
+                we mention here : how to create logger 
+    Step 5 : main.py ==> Here we test our logger is perfectly work or not 
+
+Phase 2 : Data Injection 

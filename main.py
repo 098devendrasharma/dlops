@@ -1,6 +1,3 @@
-def main():
-    print("Hello from dlops!")
-
-
-if __name__ == "__main__":
-    main()
+import logging
+from src.cnnClassifier import logger
+print(logging.info("Welcome DLops Project"))
