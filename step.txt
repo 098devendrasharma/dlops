@@ -1,83 +1,408 @@
-Project Road map
+PROJECT ROADMAP - DLOps CNN CLASSIFIER (EASY VERSION)
 
-Phase 1 : Create Project Structure and Logger
-    Step 1 : Create Virtual Environment using UV
-            Use uv to create a virtual environment.
-            It creates an isolated Python environment for your project.
-            This avoids package conflicts with other projects.
-    Step 2 : Create Template.py 
-            Create a file named template.py.
-            This file automatically creates required folders and files for the project.
-    Step 3 : Create src/cnnClassifier/constants/__init__.py
-            This file stores constant paths used in the project.
-            We define:
-                1. Configuration File Path (config.yaml)
-                    Configuration means project settings such as folders, file paths, URLs, and pipeline structure.
-                Example: config.yaml
-                            artifacts_root: artifacts
+==================================================
 
-                            data_ingestion:
-                            root_dir: artifacts/data_ingestion
-                            source_URL: https://example.com/data.zip
-                            local_data_file: artifacts/data_ingestion/data.zip
-                            unzip_dir: artifacts/data_ingestion/
-                
-                2. Parameter File Path (params.yaml)
-                    Parameters mean model values/settings used during training.
-                Example: params.yaml
-                            IMAGE_SIZE: [224, 224, 3]
-                            BATCH_SIZE: 32
-                            EPOCHS: 10
-                            LEARNING_RATE: 0.001
-                            CLASSES: 2
+PHASE 1: PROJECT SETUP (STARTING THE PROJECT)
 
-            Easy Difference Between Configuration and Parameters
-                | Type          | Meaning                 | Example                           |
-                | ------------- | ----------------------- | --------------------------------- |
-                | Configuration | Project setup settings  | folder path, URL, save location   |
-                | Parameters    | Model training settings | batch size, epochs, learning rate |
+Step 1: Create Virtual Environment
 
-    Step 4 : Create src/cnnClassifier/__init__.py
-                Inside this file, create the logger.
-                    Logger helps to:
-                                    Save execution messages
-                                    Track progress
-                                    Find errors easily 
-                                    we mention here : how to create logger 
-            Example : logs/running_logs.log
-                [2026-04-25 10:00:00] INFO - Data ingestion started
-                [2026-04-25 10:01:10] INFO - Data downloaded successfully
-    Step 5 : main.py 
-                Use main.py to test whether the logger works properly.
-            Example: 
-                from src.cnnClassifier import logger
-                logger.info("Welcome to our custom logger")
+* We create a virtual environment to keep our project separate from other projects.
+* This avoids package conflicts.
 
-Phase 2 : Data Injection 
-    What is Data Ingestion?
-        Data ingestion means collecting data from source and storing it in your project.
-    Step 1 : Create a file in utills that name is common.py 
-        in this file we have do some task like create direcory , read , load director
-    Step 2 : update cofig --> config.yaml
-        # all the folder made in artifacts folder 
-        artifacts_root: artifacts
-        
-        data_ingestion:
-            root_dir: artifacts/data_ingestion
-            source_URL: https://raw.githubusercontent.com/1602saurab/data_im/main/Chicken-fecal-images%20(2).zip
-            local_data_file: artifacts/data_ingestion/data.zip
-            unzip_dir: artifacts/data_ingestion
-        
-        # also update in config --> config.yaml
+Command:
+python -m venv venv
 
-    Step 3 : update parameter yaml
-            AUGMENTATION: True
-            IMAGE_SIZE: [224, 224, 3] # as per VGG 16 model
-            BATCH_SIZE: 16
-            INCLUDE_TOP: False
-            EPOCHS: 1
-            CLASSES: 2
-            WEIGHTS: imagenet
-            LEARNING_RATE: 0.01
- 
-    
+* Then activate the environment.
+
+---
+
+Step 2: Create template.py
+
+* This file helps us automatically create folders and files.
+* Instead of manually creating everything, we run:
+
+python template.py
+
+* It builds the basic project structure.
+
+---
+
+Step 3: Create Constants File
+Location: src/cnnClassifier/constants/**init**.py
+
+* This file stores important file paths like:
+
+  * config.yaml (project settings)
+  * params.yaml (model parameters)
+
+Why?
+
+* So we don’t hardcode paths again and again.
+
+---
+
+Step 4: Create Logger
+Location: src/cnnClassifier/**init**.py
+
+* Logger is used to track what is happening in the project.
+* It helps in debugging and monitoring.
+
+Example log:
+[INFO] Data ingestion started
+[INFO] Data downloaded successfully
+
+---
+
+Step 5: Create main.py
+
+* This is the main file from where the project runs.
+* We use it to test logger first.
+
+Run:
+python main.py
+
+---
+
+Step 6: Install Requirements
+
+* Add all required libraries in requirements.txt
+* Install them using:
+
+pip install -r requirements.txt
+
+---
+
+==================================================
+
+PHASE 2: DATA INGESTION (GETTING THE DATA)
+
+What is Data Ingestion?
+
+* It means downloading data from a source and storing it locally.
+
+---
+
+Step 1: Create Utility File
+Location: src/cnnClassifier/utils/common.py
+
+* This file contains helper functions like:
+
+  * create folders
+  * read YAML files
+  * save/load files
+
+---
+
+Step 2: Update config.yaml
+Location: config/config.yaml
+
+* This file stores project settings.
+
+Example:
+
+artifacts_root: artifacts
+
+data_ingestion:
+root_dir: artifacts/data_ingestion
+source_URL: dataset link
+local_data_file: artifacts/data_ingestion/data.zip
+unzip_dir: artifacts/data_ingestion
+
+Explanation:
+
+* root_dir → where data will be stored
+* source_URL → where data comes from
+* local_data_file → where zip file is saved
+* unzip_dir → where data is extracted
+
+---
+
+Step 3: Update params.yaml
+
+* This file stores model parameters.
+
+Example:
+
+IMAGE_SIZE: [224, 224, 3]
+BATCH_SIZE: 16
+EPOCHS: 1
+LEARNING_RATE: 0.01
+
+Difference:
+
+* config.yaml → project setup
+* params.yaml → model training settings
+
+---
+
+Step 4: Create Research Notebook
+Location: research/data_ingestion.ipynb
+
+* We write and test code here before moving to main project.
+
+---
+
+Step 5: Create Entity Class
+Location: src/cnnClassifier/entity/config_entity.py
+
+* Entity class stores structured data.
+
+Example:
+class DataIngestionConfig:
+pass
+
+---
+
+Step 6: Update Configuration Manager
+Location: src/cnnClassifier/config/configuration.py
+
+* Add function:
+  get_data_ingestion_config()
+
+* This function reads config.yaml and returns values.
+
+---
+
+Step 7: Create Component
+Location: src/cnnClassifier/components/data_ingestion.py
+
+* This file contains actual logic:
+
+  * download data
+  * unzip data
+
+---
+
+Step 8: Create Pipeline
+Location: src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+
+* Pipeline connects all steps together.
+
+---
+
+Step 9: Update main.py
+
+* Add code to run data ingestion stage.
+
+---
+
+Output:
+
+* Data will be downloaded and extracted in artifacts folder.
+
+==================================================
+
+PHASE 3: PREPARE BASE MODEL
+
+* In this phase, we load and prepare the deep learning model.
+
+---
+
+Step 1: Update config.yaml
+
+prepare_base_model:
+root_dir: artifacts/prepare_base_model
+
+---
+
+Step 2: Research Notebook
+Location: research/prepare_base_model.ipynb
+
+---
+
+Step 3: Create Entity
+
+class PrepareBaseModelConfig:
+pass
+
+---
+
+Step 4: Update Configuration Manager
+
+Function:
+get_prepare_base_model_config()
+
+---
+
+Step 5: Create Component
+Location: components/prepare_base_model.py
+
+* Load pretrained model (like VGG16)
+
+---
+
+Step 6: Create Pipeline
+Location: pipeline/stage_02_prepare_base_model.py
+
+---
+
+Step 7: Update main.py
+
+* Add Stage 2 execution
+
+==================================================
+
+PHASE 4: PREPARE CALLBACKS
+
+* Callbacks help control training process (like saving best model).
+
+---
+
+Step 1: Update config.yaml
+
+prepare_callbacks:
+
+---
+
+Step 2: Research Notebook
+Location: research/03_prepare_callbacks.ipynb
+
+---
+
+Step 3: Create Entity
+
+class PrepareCallbacksConfig:
+pass
+
+---
+
+Step 4: Update Configuration Manager
+
+Function:
+get_prepare_callback_config()
+
+---
+
+Step 5: Create Component
+Location: components/prepare_callbacks.py
+
+==================================================
+
+PHASE 5: MODEL TRAINING
+
+* Now we train the model.
+
+---
+
+Step 1: Update config.yaml
+
+training:
+root_dir: artifacts/training
+
+---
+
+Step 2: Research Notebook
+Location: research/training.ipynb
+
+---
+
+Step 3: Create Entity
+
+class TrainingConfig:
+pass
+
+---
+
+Step 4: Update Configuration Manager
+
+Function:
+get_training_config()
+
+---
+
+Step 5: Create Component
+Location: components/training.py
+
+* Contains training logic
+
+---
+
+Step 6: Create Pipeline
+Location: pipeline/stage_03_training.py
+
+---
+
+Step 7: Run Project
+
+python main.py
+
+==================================================
+
+PHASE 6: MODEL EVALUATION
+
+* In this phase, we check model performance.
+
+---
+
+Step 1: Research Notebook
+Location: research/05_model_evaluation.ipynb
+
+---
+
+Step 2: Output
+
+* score.json file created
+* It contains:
+
+  * accuracy
+  * loss
+
+---
+
+Step 3: Create Entity
+
+class EvaluationConfig:
+pass
+
+---
+
+Step 4: Update Configuration Manager
+
+Function:
+get_validation_config()
+
+---
+
+Step 5: Create Component
+Location: components/evaluation.py
+
+---
+
+Step 6: Create Pipeline
+Location: pipeline/stage_04_evaluation.py
+
+---
+
+Step 7: Update main.py
+
+STAGE_NAME = "Evaluation stage"
+
+---
+
+Step 8: Run Project
+
+python main.py
+
+==================================================
+
+FINAL OUTPUT
+
+Artifacts folder will contain:
+
+* Downloaded data
+* Trained model
+* Logs
+* Evaluation results
+
+==================================================
+
+SIMPLE ARCHITECTURE UNDERSTANDING
+
+config      → project settings (paths, URLs)
+params      → model settings (epochs, batch size)
+entity      → data structure
+components  → main logic (download, train, evaluate)
+pipeline    → connects steps
+main.py     → runs everything
+
+==================================================
