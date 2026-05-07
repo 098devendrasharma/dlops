@@ -282,3 +282,50 @@ x==========x]
 [2026-05-05 11:19:40,084: INFO: main: >>>>>> Evaluation completed <<<<<<
 
 x==========x]
+[2026-05-07 10:26:36,535: INFO: stage_01_data_ingestion: >>>> stage Data Ingestion stage started >>>>>]
+[2026-05-07 10:26:36,540: INFO: common: YAML file config\config.yaml loaded successfully]
+[2026-05-07 10:26:36,545: INFO: common: YAML file params.yaml loaded successfully]
+[2026-05-07 10:26:36,545: INFO: common: created directory at: artifacts]
+[2026-05-07 10:26:36,545: INFO: common: created directory at: artifacts/data_ingestion]
+[2026-05-07 10:26:36,545: INFO: data_ingestion: File already exists of size: ~ 11345 KB]
+[2026-05-07 10:26:36,999: INFO: stage_01_data_ingestion: >>> stage Data Ingestion stage completed >>>>>
+
+ x======x]
+[2026-05-07 10:26:48,931: INFO: stage_02_prepare_base_model: *******************]
+[2026-05-07 10:26:48,931: INFO: stage_02_prepare_base_model: >>>>>> stage Prepare base model started <<<<<<]
+[2026-05-07 10:26:48,937: INFO: common: YAML file config\config.yaml loaded successfully]
+[2026-05-07 10:26:48,937: INFO: common: YAML file params.yaml loaded successfully]
+[2026-05-07 10:26:48,937: INFO: common: created directory at: artifacts]
+[2026-05-07 10:26:48,941: INFO: common: created directory at: artifacts/prepare_base_model]
+[2026-05-07 10:26:49,576: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-07 10:26:49,738: WARNING: config: TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.]
+[2026-05-07 10:26:49,781: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-07 10:26:49,916: INFO: stage_02_prepare_base_model: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2026-05-07 10:26:55,304: INFO: stage_03_training: *******************]
+[2026-05-07 10:26:55,304: INFO: stage_03_training: >>>>>> stage Training started <<<<<<]
+[2026-05-07 10:26:55,304: INFO: common: YAML file config\config.yaml loaded successfully]
+[2026-05-07 10:26:55,304: INFO: common: YAML file params.yaml loaded successfully]
+[2026-05-07 10:26:55,304: INFO: common: created directory at: artifacts]
+[2026-05-07 10:26:55,304: INFO: common: created directory at: artifacts\prepare_callbacks\checkpoint_dir]
+[2026-05-07 10:26:55,313: INFO: common: created directory at: artifacts\prepare_callbacks\tensorboard_log_dir]
+[2026-05-07 10:26:55,314: INFO: common: created directory at: artifacts\training]
+[2026-05-07 10:26:55,562: WARNING: config: TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.]
+[2026-05-07 10:26:55,562: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-05-07 10:28:16,823: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-07 10:28:16,924: WARNING: saving_api: You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')` or `keras.saving.save_model(model, 'my_model.keras')`. ]
+[2026-05-07 10:28:17,007: INFO: stage_03_training: >>>>>> stage Training completed <<<<<<
+
+x==========x]
+[2026-05-07 10:28:21,570: INFO: stage_04_evaluation: *******************]
+[2026-05-07 10:28:21,570: INFO: stage_04_evaluation: >>>>>> stage Evaluation stage started <<<<<<]
+[2026-05-07 10:28:21,579: INFO: common: YAML file config\config.yaml loaded successfully]
+[2026-05-07 10:28:21,581: INFO: common: YAML file params.yaml loaded successfully]
+[2026-05-07 10:28:21,581: INFO: common: created directory at: artifacts]
+[2026-05-07 10:28:21,820: WARNING: config: TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.]
+[2026-05-07 10:28:21,820: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2026-05-07 10:28:28,395: INFO: common: json file saved at: scores.json]
+[2026-05-07 10:28:28,395: INFO: stage_04_evaluation: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
