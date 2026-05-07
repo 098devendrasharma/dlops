@@ -418,6 +418,9 @@ when we execute this command it will generate .dvcfolder
 
 Now for excute the command step by step from dvc.yaml we have to write this n our terminal . 
 
+
+
+
 dvc repro 
 
 
