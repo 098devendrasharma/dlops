@@ -1,11 +1,11 @@
 name: workflow
+
 on:
   push:
     branches:
       - main
     paths-ignore:
       - 'README.md'
-      - 'All_About_DVC.md'
 
 permissions:
   id-token: write
